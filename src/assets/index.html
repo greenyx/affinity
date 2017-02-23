@@ -24,7 +24,23 @@
     <!-- ADD YOUR SITE VENDOR JAVASCRIPT DEPENDENSIES BEFORE -->
   </head>
   <body id="body">
-    <script type="text/javascript" charset="utf-8">Elm.Application.fullscreen();</script>
+    <div id="app"></div>
+    <div id="world"></div>
+
+    <script>
+    var node1 = document.getElementById('world');
+    var app1 = Elm.Application.embed(node1);
+
+    var node = document.getElementById('app');
+    var app = Elm.WordClock.Main.embed(node);
+
+
+
+    // Note: if your Elm module is named "MyThing.Root" you
+    // would call "Elm.MyThing.Root.embed(node)" instead.
+</script>
+
+    <!-- <script type="text/javascript" charset="utf-8">Elm.Application.fullscreen();</script> -->
     <!-- HERE APPLICATION WILL BE INJECTED -->
   </body>
 </html>

@@ -15,9 +15,10 @@ module.exports = {
         mode: 'native'
       },
       elmBrunch: {
-        mainModules: ['src/elm/Application.elm'],
+        mainModules: ['src/elm/Application.elm','src/elm/WordClock/Main.elm'],
         outputFolder: "public/javascripts/",
-        outputFile: "elm.js"
+        outputFile: "elm.js",
+        makeParameters: ['--debug --warn']
       }
     }
   }
