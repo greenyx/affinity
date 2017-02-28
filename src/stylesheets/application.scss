@@ -13,14 +13,10 @@
   font: 16px / 16px;
 }
 
-// .hour {
-//   display: block;
-//   position: relative;
-//
-//   margin: 0;
-//   padding: 0;
-//
-//   font: 180px ;
-// }
+.hour {
+  font: 100% Helvetica, sans-serif;
+  color: #333;
+}
 
 @import "modules/e-application-layout";
+@import "modules/todo-layout.scss"

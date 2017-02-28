@@ -14,7 +14,7 @@
     <!-- ADD YOUR SITE VENDOR FONTS DEPENDENSIES AFTER -->
 
     <!-- ADD YOUR SITE VENDOR STYLESHEETS DEPENDENSIES AFTER -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css"> -->
     <link rel="stylesheet" href="stylesheets/application.css">
     <!-- ADD YOUR SITE VENDOR STYLESHEETS DEPENDENSIES AFTER -->
 
@@ -26,6 +26,7 @@
   <body id="body">
     <div id="app"></div>
     <div id="world"></div>
+    <div id="todo"></div>
 
     <script>
     var node1 = document.getElementById('world');
@@ -33,8 +34,17 @@
 
     var node = document.getElementById('app');
     var app = Elm.WordClock.Main.embed(node);
+    //
+    var node2 = document.getElementById('todo');
+    // var app2 = Elm.Application.embed(node2);
 
 
+    var storedState = localStorage.getItem('elm-todo-save');
+    var startingState = storedState ? JSON.parse(storedState) : null;
+    var todomvc = Elm.Todo.embed(node2,startingState);
+    todomvc.ports.setStorage.subscribe(function(state) {
+        localStorage.setItem('elm-todo-save', JSON.stringify(state));
+    });
 
     // Note: if your Elm module is named "MyThing.Root" you
     // would call "Elm.MyThing.Root.embed(node)" instead.
