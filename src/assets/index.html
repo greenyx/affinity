@@ -24,13 +24,25 @@
     <!-- ADD YOUR SITE VENDOR JAVASCRIPT DEPENDENSIES BEFORE -->
   </head>
   <body id="body">
-    <div id="app"></div>
-    <div id="world"></div>
-    <div id="todo"></div>
+    <div class="row">
+      <div  class="col s4" id="todo"></div>
+      <div  class="col s8" id="app"></div>
+
+    <!-- </div>
+
+    <div >
+    </div>
+
+    <div >
+    </div> -->
+
+
+    <!-- <div id="world"></div> -->
+
 
     <script>
-    var node1 = document.getElementById('world');
-    var app1 = Elm.Application.embed(node1);
+    // var node1 = document.getElementById('world');
+    // var app1 = Elm.Application.embed(node1);
 
     var node = document.getElementById('app');
     var app = Elm.WordClock.Main.embed(node);
