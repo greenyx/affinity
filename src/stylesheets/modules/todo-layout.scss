@@ -8,8 +8,12 @@ body {
 
 .todomvc-wrapper {
     visibility: visible !important;
-}
 
+}
+.hour {
+  text-align: center;
+  font-size: 10.2rem;
+}
 button {
     margin: 0;
     padding: 0;

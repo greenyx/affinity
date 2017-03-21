@@ -6,6 +6,10 @@ tellTime : Time -> (String, String)
 tellTime a =
   hoursAndMinute ( hour <|fromTime a, minute <|fromTime a)
 
+tellShortTime : Time -> (String, String)
+tellShortTime a =
+  shortHoursAndMinute ( hour <|fromTime a, minute <|fromTime a)
+
 -- -- Tell the time, take a time object and return a tuple of time
 --  -- in word hours and minutes
 --  -- ago {time} koja {iseju time}
@@ -89,6 +93,17 @@ hoursAndMinute (a, b) =
     ("agogo" ++ yNumbers (a + 1),"kù ìṣéjú" ++ yNumbers( 60 - b))
   else ("","")
 
+shortHoursAndMinute : ( Int, number ) -> ( String, String )
+shortHoursAndMinute (a , b) =
+  if b == 00 then
+    ("agogo" ++ yNumbers(a % 12),"")
+  else if b == 30 then
+    ("agogo" ++ yNumbers(a % 12),"àti ààbò")
+  else if b < 30 then
+    ("agogo" ++ yNumbers(a % 12),"kojá ìṣéjú" ++ yNumbers(b))
+  else if b > 30 then
+    ("agogo" ++ yNumbers ((a % 12) + 1),"kù ìṣéjú" ++ yNumbers( 60 - b))
+  else ("","")
 
 yGreetings : Int -> String
 yGreetings a =

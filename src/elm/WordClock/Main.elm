@@ -1,6 +1,6 @@
 module WordClock.Main exposing (..)
 
-import Html exposing (Html, program, h2, div, text)
+import Html exposing (Html, program, ul, li, div, text)
 import Html.Events as Events
 import Html.Attributes exposing (..)
 import Time exposing (Time)
@@ -25,17 +25,32 @@ view model =
   -- div []
   --   [  div [] [ text (toString (tel model)) ]
   --   ]
-  let
+  if (second model)
+    then
+       let
     (iseju, wakati) =
       (tellTime (first model))
     igba =
       Date.fromTime (first model) |> Date.hour |> yGreetings
   in
-      div [class "hour"]
-        [  h2 [Events.onDoubleClick DoubleClick] [ text (iseju ) ]
-          , h2 [Events.onDoubleClick DoubleClick] [ text (wakati) ]
-          , h2 [Events.onDoubleClick DoubleClick] [ text (igba) ]
+      ul [class "hour"]
+        [  li [Events.onDoubleClick DoubleClick] [ text (iseju ) ]
+          , li [Events.onDoubleClick DoubleClick] [ text (wakati) ]
+          , li [Events.onDoubleClick DoubleClick] [ text (igba) ]
         ]
+
+    else
+      let
+      (iseju, wakati) =
+        (tellShortTime (first model))
+      igba =
+        Date.fromTime (first model) |> Date.hour |> yGreetings
+    in
+        ul [class "hour"]
+          [  li [Events.onDoubleClick DoubleClick] [ text (iseju ) ]
+            , li [Events.onDoubleClick DoubleClick] [ text (wakati) ]
+            , li [Events.onDoubleClick DoubleClick] [ text (igba) ]
+          ]
 
 
 -- UPDATE
